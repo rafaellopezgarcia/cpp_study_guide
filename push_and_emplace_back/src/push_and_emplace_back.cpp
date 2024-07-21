@@ -36,7 +36,7 @@ int main() {
     std::cout << "emplace_back" << std::endl;
     Smartphone other_smartphone;
     smartphone_list.emplace_back(other_smartphone);
-    smartphone_list.emplace_back(4, std::move(other_smartphone));
+    smartphone_list.emplace_back(std::move(other_smartphone));
     smartphone_list.emplace_back();
 
     std::cout << "move semantics" << std::endl;

@@ -10,7 +10,7 @@ not precise.
 
 The main difference between `emplace_back` and `push_back` is that 
 - `emplace_back` is a variadic template with a parameter pack of universal 
-references that are forwarded to the constructors. The constructors can be
+references that are perfect forwarded to the constructors. The constructors are
 either a constructor, a copy constructor, or a move constructor.
 
 - `push_back` provides overloads for copy and a move constructors.
@@ -41,3 +41,15 @@ resource leaks.
 
 `emplace_back` leads to potential improved code efficiency at the cost of
 diminished exception safety.
+
+Emplacement functions can do everythin insertion functions can. They 
+sometimes do it more efficiently, and, at least in theory, they shoud never
+do it less efficiently
+
+
+## Custom deleter issue
+The code snippet `custom_deleter_issue.cpp` results into an excessive use 
+of move constructors. Why is this happening?
+
+Is the use of a functor to create a custom deleter a bad practice or is it 
+rather an implementation deficiency of C++?
